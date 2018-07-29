@@ -1,0 +1,23 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "me.tester.HolemanProperties",
+      "name": "holeman",
+      "type": "me.tester.HolemanProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "me.tester.HolemanProperties",
+      "defaultValue": 0,
+      "name": "holeman.how-long",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "me.tester.HolemanProperties",
+      "name": "holeman.name",
+      "type": "java.lang.String"
+    }
+  ]
+}
