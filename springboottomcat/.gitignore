@@ -1,0 +1,14 @@
+*.iml
+*.idea
+*.classpath
+
+target
+target/
+
+tomcat.*
+
+*.log
+*.log*
+logs
+
+.npm
