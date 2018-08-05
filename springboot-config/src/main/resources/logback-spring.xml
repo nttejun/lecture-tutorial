@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <!--boot.event 패키지에 관련된 내용은 Debug 표시하도록 Level 설정-->
+    <!--<logger name="boot.event" level="DEBUG"/>-->
+
+    <!--spring framework 웹에 관련된 내용은 Debug 표시하도록 Level 설정-->
+    <logger name="org.springframework.web" level="DEBUG"/>
+</configuration>
