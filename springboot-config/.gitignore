@@ -1,0 +1,12 @@
+*.iml
+.iml
+.idea
+.classpath
+target
+
+*.log
+*.log*
+logs
+
+.npm
+
