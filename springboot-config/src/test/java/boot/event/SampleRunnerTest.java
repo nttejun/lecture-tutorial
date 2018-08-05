@@ -12,6 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 
+// property 설정 우선순위 2 (locations 지정 사용법)
+@TestPropertySource(locations = "classpath:/test.properties")
+
 // property 설정 우선순위 2
 //@TestPropertySource(properties="wj.name=priority second")
 
