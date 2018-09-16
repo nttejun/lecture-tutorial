@@ -3,6 +3,7 @@ package spring.dependency.domain;
 public class User {
     String id;
     String name;
+    String pw;
 
     public String getId() {
         return id;
@@ -20,13 +21,11 @@ public class User {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPw() {
+        return pw;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPw(String pw) {
+        this.pw = pw;
     }
-
-    String password;
 }

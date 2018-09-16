@@ -1,36 +1,32 @@
 package spring.dependency.dao;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import spring.dependency.domain.User;
 
 import java.sql.SQLException;
 
 public class UserDaoTest {
 
-//    private static Logger logger = LoggerFactory.getLogger(UserDaoTest.class);
-
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
-        UserDao userDao = new NUserDao();
+        UserDao userDao = new DaoFactory().userDao();
 
-//        logger.info("USER INSERT START");
+        System.out.println("USER INSERT START");
 
         User user = new User();
         user.setId("wj");
         user.setName("wj");
-        user.setPassword("wj");
+        user.setPw("wj");
 
         userDao.add(user);
 
-//        logger.info("USER INSERT END");
+        System.out.println("USER INSERT END");
 
 
-//        logger.info("USER FIND START");
+        System.out.println("USER FIND START");
+
         User user1 = userDao.get("wj", "wj");
-//        logger.info(user1.getId() + " IS USER");
-//        logger.info(user1.getName());
-//        logger.info(user1.getPassword());
+        System.out.println(user1.getId() + " IS USER");
+        System.out.println(user1.getName());
+        System.out.println(user1.getPw());
 
     }
 }

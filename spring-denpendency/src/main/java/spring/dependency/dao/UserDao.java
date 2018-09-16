@@ -1,27 +1,29 @@
 package spring.dependency.dao;
 
 import spring.dependency.domain.User;
-import sun.tools.java.ClassNotFound;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public abstract class UserDao {
+public class UserDao {
 
-    public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
+    ConnectionMaker connectionMaker = new ConnectionMakerImpl();
+
+    public UserDao(ConnectionMaker connectionMaker){
+        this.connectionMaker = connectionMaker;
+    }
 
     public void add(User user) throws ClassNotFoundException, SQLException{
-        Connection conn = getConnection();
+        Connection conn = connectionMaker.makeMysqlConnection();
 
         PreparedStatement statement = conn
-                .prepareStatement("INSERT INTO USER(id, name, password) VALUES (?, ?, ?)");
+                .prepareStatement("INSERT INTO TBM_USER(user_id, user_name, user_pw) VALUES (?, ?, ?)");
         statement.setString(1, user.getId());
         statement.setString(2, user.getName());
-        statement.setString(3, user.getPassword());
+        statement.setString(3, user.getPw());
         statement.execute();
 
         statement.close();
@@ -29,10 +31,10 @@ public abstract class UserDao {
     }
 
     public User get(String id, String pw) throws ClassNotFoundException, SQLException {
-        Connection conn = getConnection();
+        Connection conn = connectionMaker.makeMysqlConnection();
 
         PreparedStatement statement = conn
-                .prepareStatement("SELECT * FROM USER WHERE user_id = ? AND user_pw = ?");
+                .prepareStatement("SELECT * FROM TBM_USER WHERE user_id = ? AND user_pw = ?");
         statement.setString(1, id);
         statement.setString(2, pw);
 
@@ -40,9 +42,9 @@ public abstract class UserDao {
         resultSet.next();
 
         User user = new User();
-        user.setId(resultSet.getString("id"));
-        user.setName(resultSet.getString("name"));
-        user.setPassword(resultSet.getString("password"));
+        user.setId(resultSet.getString("user_id"));
+        user.setName(resultSet.getString("user_name"));
+        user.setPw(resultSet.getString("user_pw"));
 
         resultSet.close();
         statement.close();
