@@ -1,4 +1,6 @@
 package spring.dependency.dao;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring.dependency.domain.User;
 
 import java.sql.SQLException;
@@ -7,7 +9,9 @@ public class UserDaoTest {
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
-        UserDao userDao = new DaoFactory().userDao();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DaoFactory.class);
+        UserDao userDao = applicationContext.getBean("userDao", UserDao.class);
+
 
         System.out.println("USER INSERT START");
 
