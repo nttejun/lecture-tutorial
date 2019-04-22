@@ -1,4 +1,4 @@
-package thread;
+package com.thread;
 
 public class Thread1 extends Thread {
 
